@@ -1,0 +1,26 @@
+<div class="container">
+  <br>
+  <h2 style="text-align: center;">{{title}}</h2>
+  <hr>
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <app-create-employee></app-create-employee>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <app-employee-list></app-employee-list>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="col"><hr></div>
+  <div class="row">
+    <div class="card col-sm-12">
+      <div class="card-body">
+        <app-hierachy-report></app-hierachy-report>
+      </div>
+    </div>
+  </div>
+</div>
