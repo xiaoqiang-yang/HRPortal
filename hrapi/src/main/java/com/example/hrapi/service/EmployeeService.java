@@ -49,7 +49,7 @@ public class EmployeeService {
     }
 
     public Employee buildOrgchart(List<Employee> employees) {
-        Employee topManager = null;
+        Employee topManager;
         Map<Integer, Employee> maps = employees.stream()
                 .collect(Collectors.toMap(Employee::getEmployeeID, employee -> employee));
         employees.stream().forEach(employee -> {

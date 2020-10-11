@@ -29,9 +29,9 @@ public class SparseMatrix<E> {
         this.maxCol = maxCol;
     }
 
-    static class SparseItem<T> {
+    public static class SparseItem<T> {
         int row, col;
-
+        private T value;
         public int getRow() {
             return row;
         }
@@ -56,20 +56,34 @@ public class SparseMatrix<E> {
             this.row = row;
         }
 
-        private T value;
-
         public SparseItem(int row, int col, T value) {
             this.row = row;
             this.col = col;
             this.value = value;
         }
+
+        @Override
+        public String toString() {
+            return "row: " + row + " col: " + col + " value: " + (value != null ? value.toString() : "");
+        }
     }
+
     public void add(int row, int col, E element) {
         maxRow = row > maxRow ? row : maxRow;
         maxCol = col > maxCol ? col : maxCol;
         sparseItems.add(new SparseItem<E>(row, col, element));
     }
-    public int getElementNumber(){
+
+    public int getElementNumber() {
         return sparseItems.size();
+    }
+
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append("maxRow = " + maxRow + " , maxCol = " + maxCol + "\n");
+        for (int i = 0; i < sparseItems.size(); i++) {
+            s.append(i + ": " + sparseItems.get(i) + "\n");
+        }
+        return s.toString();
     }
 }
